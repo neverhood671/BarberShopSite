@@ -1,0 +1,23 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    background: #231F20;
+    color: #FFF;
+    width: 100%;
+    padding: 20px 50px;
+
+    &__link {
+        cursor: pointer;
+        color: #FFF;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+            color: none;
+        }
+    }
+
+    &__social-link {
+        margin: 5px;
+    }
+}
