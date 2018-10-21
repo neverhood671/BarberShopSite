@@ -14,7 +14,7 @@ gulp.task('html', function() {
 
 
 gulp.task('sass', function() {
-    return gulp.src('src/view/components/**/*.scss')
+    return gulp.src('src/view/**/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(concatCss("bundle.css"))
         .pipe(minifyCSS())
