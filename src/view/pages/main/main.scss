@@ -1,0 +1,25 @@
+button {
+    cursor: pointer;
+}
+
+.header {
+    background-color: #0e0e0e;
+    background-image: url(../img/main_1.jpg);
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+
+    .header__text {
+        display: block;
+        color: #fff;
+    }
+
+    .header__button {
+        display: block;
+        background: #fff;
+        color: #0e0e0e;
+        border: none;
+        border-radius: 5px;
+    }
+}
