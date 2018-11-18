@@ -1,7 +1,7 @@
 let express = require('express');
-let router = express.Router();
 let passport = require('passport');
 let Account = require('../model/account');
+let router = express.Router();
 
 
 let routesMap = {
@@ -9,7 +9,8 @@ let routesMap = {
     '/contacts': 'pages/contacts/contacts',
     '/services': 'pages/services/services',
     '/recall': 'pages/recall/recall',
-    '/appointment': 'pages/appointment/appointment'
+    '/appointment': 'pages/appointment/appointment',
+    '/account':  'pages/account/account'
 };
 
 let clientsFeed =   [ 
@@ -115,7 +116,7 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    console.log('username: ' + req.body.username);
+    
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
             console.log(err);
@@ -133,7 +134,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+    res.redirect('/account');
 });
 
 router.get('/logout', function(req, res) {

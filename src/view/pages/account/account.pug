@@ -1,0 +1,12 @@
+extends ../general.pug
+
+block content
+	section.account
+		h1.mt-5.ml-5 Личный Кабинет
+
+		form.ml-auto.mr-auto.mt-5.account__form
+			.form-group.mt-3 
+				label(for="recallTextarea") Оставьте ваш отзыв
+				textarea#recallTextarea.form-control(rows="3")
+
+				button#sendRecallBtn.btn.btn-primary.ml-auto.mr-auto.mt-5(type="submit") Отправить

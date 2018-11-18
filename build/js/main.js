@@ -79,8 +79,6 @@ function isInputValid(elem) {
     return true;
 }
 
-ymaps.ready(initMap);
-
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -105,5 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Inputmask().mask(document.querySelectorAll("input"));
 
     validateForm('makeAppointment', 'form_valid', 'form_invalid', 'input_error');
+
+    ymaps.ready(initMap);
 
 }, false);
