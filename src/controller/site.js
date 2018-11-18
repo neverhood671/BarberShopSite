@@ -142,6 +142,11 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
+router.post('/api/makeAppointment', function(req, res) {
+    console.log('hey!!!!');
+    //todo: insert data to db
+});
+
 
 router.use(function(req, res, next) {
 

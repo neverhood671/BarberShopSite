@@ -2,35 +2,35 @@ extends ../general.pug
 
 block content
   section.appointment
-    form#makeAppointment.appointment__form.ml-auto.mr-auto.mt-5
+    form#makeAppointment.appointment__form.ml-auto.mr-auto.mt-5(role='form', action="/makeAppointment", method="post")
       p.form__success-msg Ваша заявка принята! Мы свяжемся с вами для подтверждения в ближайшее время. 
       p.form__error-msg Форма содержит ошибки
       .d-flex.flex-wrap
         .form-row.w-100.mb-3
           .col
-            input.form-control(type="text" placeholder="Ваше Имя" data-required)
+            input.form-control(form="makeAppointment" type="text" placeholder="Ваше Имя" data-required)
         .form-row.w-100.mb-3
           .col
-            input.form-control.form-tel(type="tel" placeholder="+7 (900) 000-00-00" data-required data-inputmask="'mask': '+7 (999) 999-99-99'")
+            input.form-control.form-tel(form="makeAppointment" type="tel" placeholder="+7 (900) 000-00-00" data-required data-inputmask="'mask': '+7 (999) 999-99-99'")
         .form-row.w-100.mb-3
           .col
-            input.form-control.form-date(type="date" data-required)
+            input.form-control.form-date(form="makeAppointment" type="date" data-required)
         .form-row.w-100.mb-3
           .col
-            input.form-control(type="time" value="10:00" min="10:00" max="20:00" data-required)
+            input.form-control(form="makeAppointment" type="time" value="10:00" min="10:00" max="20:00" data-required)
         
         .form-group.mt-3 Выберете услуги
                     .form-check
-                      input.form-check-input(type="checkbox" name="service" id="haircut")
+                      input.form-check-input(form="makeAppointment" type="checkbox" name="service" id="haircut")
                       label.form-check-label(for="haircut" ) Стрижка
                     .form-check  
-                      input.form-check-input(type="checkbox" name="service" id="beard-trim")
+                      input.form-check-input(form="makeAppointment" type="checkbox" name="service" id="beard-trim")
                       label.form-check-label(for="beard-trim" ) Моделирование бороды
                     .form-check
-                      input.form-check-input(type="checkbox" name="service" id="shaving")
+                      input.form-check-input(form="makeAppointment" type="checkbox" name="service" id="shaving")
                       label.form-check-label(for="shaving" ) Бритье опасной бритвой
                     .form-check
-                      input.form-check-input(type="checkbox" name="service" id="child-haircut")
+                      input.form-check-input(form="makeAppointment" type="checkbox" name="service" id="child-haircut")
                       label.form-check-label(for="child-haircut" ) Детская стрижка
         span.form__comment Выберете хотя бы одну услугу
 

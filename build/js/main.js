@@ -18,6 +18,25 @@ function initMap() {
     map.geoObjects.add(placemark);
 }
 
+function sendAppointmentForm() {
+    let formElement = document.getElementById('makeAppointment');
+    const data = new URLSearchParams();
+    for (const pair of new FormData(formElement)) {
+        data.append(pair[0], pair[1]);
+    }
+    fetch('/api/makeAppointment', {
+            method: 'post',
+            body: data
+        })
+        .then(res => res.json())
+        .then(function(data) {
+            console.log('Request succeeded with JSON response', data);
+        })
+        .catch(function(error) {
+            console.log('Request failed', error);
+        });
+}
+
 function validateForm(formId, formValidClass, formInvalidClass, inputErrorClass) {
 
     let inputs = document.getElementsByTagName("input");
@@ -32,7 +51,7 @@ function validateForm(formId, formValidClass, formInvalidClass, inputErrorClass)
             if (event.target.tagName == "INPUT") {
                 event.target.classList.remove(inputErrorClass);
             }
-            if (event.target.classList.contains('form-check-input')){
+            if (event.target.classList.contains('form-check-input')) {
                 document.querySelector('.form__comment').classList.remove(inputErrorClass);
                 document.querySelector('.form__comment').style.color = '#777';
             }
@@ -45,6 +64,7 @@ function validateForm(formId, formValidClass, formInvalidClass, inputErrorClass)
         if (checkFormCorrectness(inputErrorClass)) {
             form.classList.remove(formInvalidClass);
             form.classList.add(formValidClass);
+            sendAppointmentForm();
         } else {
             form.classList.remove(formValidClass);
             form.classList.add(formInvalidClass);
@@ -58,9 +78,9 @@ function checkFormCorrectness(invalidInputClass) {
             input.classList.add(invalidInputClass);
         }
     });
-    if (document.querySelectorAll('input[name="service"]:checked').length === 0){
+    if (document.querySelectorAll('input[name="service"]:checked').length === 0) {
         document.querySelector('.form__comment').classList.add(invalidInputClass);
-        document.querySelector('.form__comment').style.color = '#ff0000' ;
+        document.querySelector('.form__comment').style.color = '#ff0000';
     }
     return document.getElementsByClassName(invalidInputClass).length == 0;
 }
