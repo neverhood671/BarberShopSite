@@ -1,0 +1,12 @@
+.modal__button {
+    display: inline-block !important;
+    background-color: #030303 !important;
+
+    color: #fff !important;
+
+    &-secondary {
+        border: 1px solid #030303 !important;
+        background-color: #fff !important;
+        color: #030303 !important;
+    }
+}

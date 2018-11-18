@@ -1,37 +1,18 @@
-.modal.fade(id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true")
+.modal.fade(id="singUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true")
   .modal-dialog.modal-dialog-centered(role="document")
     .modal-content
       .modal-header
-        h5.modal-title(id="exampleModalLongTitle") Запись
+        h5.modal-title(id="exampleModalLongTitle") 
         button.close(type="button"  data-dismiss="modal" aria-label="Close")
           span(aria-hidden="true") &times;
       
       .modal-body
-        form
-          .form-row
-            .col
-              input.form-control(type="text" placeholder="Ваше Имя")
-            .col
-              input.form-control(type="tel" class="" placeholder="+7 (900) 000-00-00")
-          .form-row
-            .col
-              input.form-control(type="date")
-          .form-group Выберете услуги
-              .form-check
-                input.form-check-input(type="checkbox" id="haircut")
-                label.form-check-label(for="haircut" ) Стрижка
-              .form-check  
-                input.form-check-input(type="checkbox" id="beard-trim")
-                label.form-check-label(for="beard-trim" ) Моделирование бороды
-              .form-check
-                input.form-check-input(type="checkbox" id="shaving")
-                label.form-check-label(for="shaving" ) Бритье опасной бритвой
-              .form-check
-                input.form-check-input(type="checkbox" id="gray-camouflage")
-                label.form-check-label(for="gray-camouflage" ) Камуфляж седины
-
-
-          button.btn.btn-primary(type="submit") Записаться
+        p Создай личный кабинет, что бы получать бонусы за каждое посещение нашего барбершопа!
+        p Ты сможешь оставлять отзывы о работе наших барберов, а так же просматривать историю своих посещений
+        
+       
+        a.main__button.modal__button.mr-5(href='/register') Зарегистрироваться
+        a.main__button.modal__button.modal__button-secondary(href='/appointment') Просто записаться  
   
      
       

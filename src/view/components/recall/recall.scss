@@ -1,0 +1,20 @@
+.one-recall{
+	background: #fff;
+	display: flex;
+    height: 120px;
+    margin: 20px 20px;
+    padding: 0 10px;
+    align-items: center;
+    border-radius: 10px;
+
+    &__author{
+    	padding: 0 10px;
+    	width: 30%;
+    }
+
+    &__text{
+    	p {
+    		margin: 0;
+    	}
+    }
+}

@@ -3,4 +3,26 @@ extends ../general.pug
 block content
 	section.recall
 		.header
-			h2.header__text Отзывы
+			.pt-5.pb-5
+				.container
+					.align-items-center
+						div.carousel.slide(id="recallCarousel")
+							ol.carousel-indicators.recall__slide-control
+								li.active.recall__slide-control-elem(data-target="#recallCarousel" data-slide-to="0")
+								li.recall__slide-control-elem(data-target="#recallCarousel" data-slide-to="1")
+								li.recall__slide-control-elem(data-target="#recallCarousel" data-slide-to="2")
+							.carousel-inner(role="listbox")
+								
+								div.carousel-item.active
+									.recall_slide.d-flex.flex-wrap
+										each feed in clientsFeed[0]
+											include ../../components/recall/recall.pug
+								div.carousel-item
+									.recall_slide.d-flex.flex-wrap
+										each feed in clientsFeed[1]
+											include ../../components/recall/recall.pug
+								div.carousel-item
+									.recall_slide.d-flex.flex-wrap
+										each feed in clientsFeed[2]
+											include ../../components/recall/recall.pug
+						

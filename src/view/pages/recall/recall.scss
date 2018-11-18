@@ -1,0 +1,15 @@
+.recall {
+    &_slide {
+        .one-recall {
+			width: calc( 50% - 40px);
+        }
+    }
+
+    &__slide-control{
+    	bottom: -30px;
+    }
+
+    &__slide-control-elem{
+    	cursor: pointer;
+    }
+}

@@ -1,0 +1,12 @@
+.one-recall
+	.one-recall__author
+		.one-recall__date !{feed.feed_date}
+		.one-recall__name(title=feed.client_name) !{feed.client_name}
+		.one-recall__service !{feed.service_name}
+	.one-recall__body
+		.one-recall__review
+			.one-recall__rating
+				each r in feed.rateArr
+					i.fa.fa-star
+			.one-recall__text
+				p !{feed.text}
