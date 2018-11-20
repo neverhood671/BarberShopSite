@@ -3,6 +3,10 @@ extends ./pages/general.pug
 block content
   .container.mt-5
     h1 Вход в Личный Кабинет
+
+    if loginErr.length > 0
+        .form_invalid
+            p.form__error-msg.position-static.mb-3.mt-3 #{loginErr}
   
     form(role='form', action="/login",method="post", style='max-width: 300px;')
       .form-group

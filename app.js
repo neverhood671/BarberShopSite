@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var Account = require('./src/model/account');
+var flash = require('connect-flash');
+
 
 var app = express();
 
@@ -30,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(flash());
 app.use(express.static(__dirname + '/build'));
 app.use('/', require('./src/controller/site.js'));
 

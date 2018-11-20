@@ -10,36 +10,47 @@ let routesMap = {
     '/services': 'pages/services/services',
     '/recall': 'pages/recall/recall',
     '/appointment': 'pages/appointment/appointment',
-    '/account':  'pages/account/account'
+    '/account': 'pages/account/account'
 };
 
 let clientsFeed = require('../data/recalls.json');
 
 router.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register', {});
 });
 
 router.post('/register', function(req, res) {
-    
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+
+    Account.register(new Account({ username: req.body.username }), req.body.password, function(err, account) {
         if (err) {
             console.log(err);
-            return res.render('register', { account : account });
+            return res.render('register', { account: account });
         }
 
-        passport.authenticate('local')(req, res, function () {
+        passport.authenticate('local')(req, res, function() {
             res.redirect('/');
         });
     });
 });
 
-router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+router.get('/login', function(req, res, next) {
+    if(req.isAuthenticated()){
+        res.redirect('/account')
+    } else {
+        res.render('login', { user: req.user, loginErr: req.flash('error') });
+    }
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/account');
+router.post('/login', passport.authenticate('local', { successRedirect: '/account', failureRedirect: '/login', failureFlash: true }));
+
+router.get('/account', function(req, res, next) {
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        res.redirect('/login');
+    }
 });
+
 
 router.get('/logout', function(req, res) {
     req.logout();
@@ -58,7 +69,7 @@ router.use(function(req, res, next) {
 
     params.path = req.path.split('/')[1] || '';
     params.viewFile = routesMap['/' + params.path];
-    if (params.path === 'recall'){
+    if (params.path === 'recall') {
         params.clientsFeed = clientsFeed;
     }
     req.templateParams = params;
