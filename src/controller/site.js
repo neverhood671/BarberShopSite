@@ -16,15 +16,18 @@ let routesMap = {
 let clientsFeed = require('../data/recalls.json');
 
 router.get('/register', function(req, res) {
-    res.render('register', {});
+    if(req.isAuthenticated()){
+        res.redirect('/account')
+    } else {
+        res.render('register');
+    }
 });
 
 router.post('/register', function(req, res) {
 
     Account.register(new Account({ username: req.body.username }), req.body.password, function(err, account) {
         if (err) {
-            console.log(err);
-            return res.render('register', { account: account });
+            return res.render('register', { registerErr: err });
         }
 
         passport.authenticate('local')(req, res, function() {
